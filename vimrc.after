@@ -1,18 +1,10 @@
 color desert
 
-let mapleader = ","
-
 " Don't wrap lines by default
 set nowrap
 
-" NERDTree
-map <Leader>n :NERDTreeToggle<CR>
-
 " switch buffers without saving
 :set hidden
-
-" " BufferGator
-map <Leader>b :BuffergatorToggle<CR>
 
 " CtrlP configuration
 map <C-j> :CtrlP<CR>

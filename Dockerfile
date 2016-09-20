@@ -16,16 +16,18 @@ RUN apt-get install -qy ack-grep most
 RUN apt-get install -qy rake
 USER vim
 RUN HOME=/home/vim; curl -Lo- https://bit.ly/janus-bootstrap | bash
-ADD vimrc.after /home/vim/.vimrc.after
 
 USER root
+
+ADD vimrc.before /home/vim/.vimrc.before
+ADD vimrc.after /home/vim/.vimrc.after
+
+RUN chown -R vim:vim /home/vim
 
 ADD entrypoint.sh /entrypoint.sh
 ADD start_vim.sh /start_vim.sh
 
 RUN chmod +x /entrypoint.sh
 RUN chmod +x /start_vim.sh
-
-#VOLUME /vim
 
 ENTRYPOINT ["/entrypoint.sh"]
