@@ -1,7 +1,7 @@
 FROM debian:jessie
 
 RUN apt-get update -q
-RUN apt-get install -qy curl git sudo
+RUN apt-get install -qy curl git sudo make gcc
 
 # user
 RUN useradd -m vim -s /bin/bash
@@ -15,7 +15,15 @@ RUN apt-get install -qy ack-grep most
 # janus
 RUN apt-get install -qy rake
 USER vim
+
+RUN mkdir ~/.janus
+RUN cd ~/.janus; git clone https://github.com/Shougo/vimshell.vim.git
+
 RUN HOME=/home/vim; curl -Lo- https://bit.ly/janus-bootstrap | bash
+
+# vimshell
+RUN cd; git clone https://github.com/Shougo/vimproc.vim.git; cd vimproc.vim; make
+RUN cd ~/vimproc.vim; cp -R autoload/ lib/ plugin/ ~/.vim/
 
 USER root
 
