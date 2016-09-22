@@ -15,7 +15,4 @@ usermod -u $HOST_UID vim
 # change vim GID to $GID
 groupmod -g $HOST_GID vim
 
-# sudo vim -c "cd /vim; ls -l; vim"
-
 sudo -u vim /start_vim.sh
-
