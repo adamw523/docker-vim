@@ -1,4 +1,4 @@
-FROM debian:jessie
+FROM debian:stretch
 
 RUN apt-get update -q
 RUN apt-get install -qy curl git sudo make gcc
